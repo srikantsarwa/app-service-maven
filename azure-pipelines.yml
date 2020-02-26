@@ -64,6 +64,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: 'mv AzureAppDemo-0.0.1-SNAPSHOT.war ROOT.war'
+              workingDirectory: '$(Pipeline.Workspace)/drop/**/target'
           - task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: wardeploysr'
             inputs:
