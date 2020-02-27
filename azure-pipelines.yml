@@ -64,11 +64,10 @@ stages:
             inputs:
               targetType: 'inline'
               script: 'ls $(Pipeline.Workspace)/drop/**/target/*.war'
-              #workingDirectory: '$(System.DefaultWorkingDirectory)/drop/target'
           #- task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: wardeploysr'
-            inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
-              package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+          #  displayName: 'Azure Web App Deploy: wardeploysr'
+          #  inputs:
+          #    azureSubscription: $(azureSubscription)
+          #    appType: webAppLinux
+          #    appName: $(webAppName)
+          #    package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
