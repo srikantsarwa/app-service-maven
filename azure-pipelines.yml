@@ -63,9 +63,9 @@ stages:
             displayName: 'Bash Script'
             inputs:
               targetType: 'inline'
-              script: 'mv $(Pipeline.Workspace)/drop/**/target/*.?(war|jar) ROOT.war'
+              script: 'ls $(Pipeline.Workspace)/drop/**/target/*.war'
               #workingDirectory: '$(System.DefaultWorkingDirectory)/drop/target'
-          - task: AzureWebApp@1
+          #- task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: wardeploysr'
             inputs:
               azureSubscription: $(azureSubscription)
