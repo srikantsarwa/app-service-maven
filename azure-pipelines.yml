@@ -69,7 +69,7 @@ stages:
             displayName: 'Bash Script'
             inputs:
               targetType: 'inline'
-              script: 'ls -lrt $(System.ArtifactsDirectory)/'
+              script: 'ls -lrt $(System.ArtifactsDirectory)'
           #- task: AzureWebApp@1
           #  displayName: 'Azure Web App Deploy: wardeploysr'
           #  inputs:
