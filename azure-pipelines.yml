@@ -63,7 +63,7 @@ stages:
             displayName: 'Bash Script'
             inputs:
               targetType: 'inline'
-              script: 'ls $(Pipeline.Workspace)/drop/**/target/*.war'
+              script: 'ls -lrt $(Pipeline.Workspace)/drop/'
           #- task: AzureWebApp@1
           #  displayName: 'Azure Web App Deploy: wardeploysr'
           #  inputs:
