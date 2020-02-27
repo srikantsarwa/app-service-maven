@@ -64,6 +64,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               downloadPath: '$(System.ArtifactsDirectory)'
+              artifactName: '*.?(war|jar)'
           - task: Bash@3
             displayName: 'Bash Script'
             inputs:
