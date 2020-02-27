@@ -70,10 +70,21 @@ stages:
             inputs:
               targetType: 'inline'
               script: 'ls -lrt $(System.ArtifactsDirectory)'
+          - task: Bash@3
+            displayName: 'Bash Script'
+            inputs:
+              targetType: 'inline'
+              script: 'ls -lrt /home/vsts/work/1'
+          - task: Bash@3
+            displayName: 'Bash Script'
+            inputs:
+              targetType: 'inline'
+              script: 'ls -lrt /home/vsts/work'
           #- task: AzureWebApp@1
           #  displayName: 'Azure Web App Deploy: wardeploysr'
           #  inputs:
           #    azureSubscription: $(azureSubscription)
+          #/home/vsts/work/1/a
           #    appType: webAppLinux
           #    appName: $(webAppName)
           #    package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
