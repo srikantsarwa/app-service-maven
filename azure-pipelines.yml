@@ -72,6 +72,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'init'
+              workingDirectory: '$(Pipeline.Workspace)/drop/tf'
               backendServiceArm: 'Azure CXP FTA Internal Subscription ssarwa (12bb4e89-4f7a-41e0-a38f-b22f079248b4)-2666'
               backendAzureRmResourceGroupName: 'Automation-RG'
               backendAzureRmStorageAccountName: 'ssarwacloudshell'
@@ -88,6 +89,7 @@ stages:
               provider: 'azurerm'
               command: 'apply'
               commandOptions: '-auto-approve'
+              workingDirectory: '$(Pipeline.Workspace)/drop/tf'
               environmentServiceNameAzureRM: 'Azure CXP FTA Internal Subscription ssarwa (12bb4e89-4f7a-41e0-a38f-b22f079248b4)-2666'
           - task: Bash@3
             displayName: 'Bash Script'
