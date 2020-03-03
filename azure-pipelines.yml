@@ -41,7 +41,13 @@ stages:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/target/*.?(war|jar)'
         TargetFolder: $(Build.ArtifactStagingDirectory)
-
+    - task: CopyFiles@2
+      displayName: 'Copy TF Files to artifact staging directory'
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)/terraform'
+        Contents: '**'
+        TargetFolder: $(Build.ArtifactStagingDirectory)/tf
+    
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
 
@@ -59,6 +65,20 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: TerraformInstaller@0
+            inputs:
+              terraformVersion: '0.12.3'
+          - task: TerraformTaskV1@0
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'Azure CXP FTA Internal Subscription ssarwa (12bb4e89-4f7a-41e0-a38f-b22f079248b4)-2666'
+              backendAzureRmResourceGroupName: 'Automation-RG'
+              backendAzureRmStorageAccountName: 'ssarwacloudshell'
+              backendAzureRmContainerName: 'templates'
+              backendAzureRmKey: 'tf/terraform.tfstate'
+          
+
           - task: Bash@3
             displayName: 'Bash Script'
             inputs:
